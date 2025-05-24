@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="darkreader-lock">
+        <title>Резюме</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/formatting.css">
+        <link rel="stylesheet" href="css/font_import.css">
+    </head>
+    <body>
+        <div class="video-background">
+            <video autoplay muted loop class="video-content">  
+                <source src="glitch_bg.mp4" type="video/mp4">  
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <main class="content-wrapper">
+            <div class="content">
+                <!-- <img src="studio_logo_eye.webp"> -->
+                <div class="sourceImages">
+                    <img id="sourceImage1" src="src/me_glitch_variants/1.png" style="display: none;">
+                    <img id="sourceImage2" src="src/me_glitch_variants/2.png" style="display: none;">
+                    <img id="sourceImage3" src="src/me_glitch_variants/3.png" style="display: none;">
+                </div>
+                <canvas id="glitchCanvas" height="400" style="margin-bottom: -64px;"></canvas>
+
+                <script src="js/glitcher.js"></script>
+                <div>
+                    <h2 class="text-shadow">Рыженков Евгений Олегович</h2>
+                    <p style="margin: 0.25em 0 2em 0;"><span class="accent">Frontend | Backend | GameDev разработчик</span></p>
+                    <div class="p-block">
+                        <div class="emoji-list">
+                            <div class="emoji-item">
+                                <span class="emoji-icon">🏫</span>
+                                <span class="emoji-text">Евгений, 16 лет. За&shyкон&shyчил 9 класс Ра&shyдумльс&shyко&shyго ка&shyдетс&shyко&shyго кор&shyпу&shyса. Всегда тя&shyнул&shyся к тех&shyно&shyло&shyги&shyям, сей&shyчас это про&shyфес&shyси&shyо&shyналь&shyный ин&shyте&shyрес.</span>
+                            </div>
+                            <div class="emoji-item">
+                                <span class="emoji-icon">👨‍💻</span>
+                                <span class="emoji-text">Fullstack–разработчик по призванию, оди&shyна&shyко&shyво уве&shyрен&shyно чувст&shyву&shyю&shyщий себя как во frontend, так и в backend</span>
+                            </div>
+                            <div class="emoji-item">
+                                <span class="emoji-icon">🎮</span>
+                                <span class="emoji-text">С недавних пор, моя вторая страсть – про&shyфес&shyси&shyо&shyналь&shyная раз&shyра&shyбот&shyка игр на Unity (C#). Главный разработчик OMEGA Studio</span>
+                            </div>
+                            <div class="emoji-item">
+                                <span class="emoji-icon">🎨</span>
+                                <span class="emoji-text">Огромный опыт в дизайне: го&shyтов соз&shyдать про&shyто&shyтип, а поз&shyже и фи&shyналь&shyный вид про&shyек&shyта или про&shyмо&shyма&shyте&shyри&shyа&shyлов лю&shyбой слож&shyнос&shyти.</span>
+                            </div>
+                            <div class="emoji-item">
+                                <span class="emoji-icon">🎬</span>
+                                <span class="emoji-text">Имеется опыт видеомонтажа (снимался и монтировал новостные выпуски событий лицея для Солнечногорского ТВ)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin: 1em 0 0 0;" class="blinking"><a>↓ Подробнее обо всём ниже ↓</a></p>
+                    <!-- <p>For any information, contact <a href="https://t.me/rkkpress" target="_blank">@rkkpress</a></p>
+                    <p>or join <a href="https://t.me/omega_gamedev" target="_blank">Telegram channel</a></p> -->
+                </div>
+            </div>
+
+            <h1>👀 Резюме</h1>
+
+            <div class="content">
+                <!-- <img src="studio_logo_eye.webp"> -->
+                <div>
+                    <h2>Hello!</h2>
+                    <p>For any information, contact <a href="https://t.me/rkkpress" target="_blank">@rkkpress</a></p>
+                    <p>or join <a href="https://t.me/omega_gamedev" target="_blank">Telegram channel</a></p>
+                </div>
+            </div>
+        </main>
+
+        <script src="js/offset_calc.js"></script>
+        <script>
+            window.onload = function() {
+                centerFirstContentBlock();
+                document.body.style.visibility = 'visible';
+            };
+        </script>
+    </body>
+</html>

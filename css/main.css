@@ -1,0 +1,129 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 400;
+
+    background-color: #0e0a07;
+    color: #e8e6e3;
+
+    user-select: none;
+    visibility: hidden;
+
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    /* justify-content: center; <-- Это центрирует .content-wrapper по горизонтали, если он не 100% ширины */
+    /* align-items: center;    <-- Это центрирует .content-wrapper по вертикали, если body имеет высоту */
+    flex-direction: column;
+    background-color: transparent;
+    min-height: 100vh; /* Чтобы body занимал всю высоту для вертикального центрирования, если нужно */
+}
+
+.content-wrapper {
+    padding: 8vh 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Центрирует .content блоки по горизонтали */
+    z-index: 1;
+    width: 100%; /* Убедимся, что обертка может растягиваться на всю ширину */
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    /* filter: blur(1rem); */
+}
+
+video {  
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;  
+    height: auto;  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.75); */
+    z-index: 0;
+}
+
+.content {
+    background-color: #0f1217;
+    text-align: center;
+    position: relative;
+
+    /* Стили по умолчанию (для ПК) */
+    width: 80%;           /* Ширина для ПК */
+    max-width: 800px;     /* Максимальная ширина, чтобы не был слишком широким. Подберите значение. */
+    padding: 50px 60px;   /* Отступы для ПК */
+    border-radius: 12px;  /* Скругление для ПК */
+    /* margin: 0 auto;    Можно добавить для явного центрирования,
+                           но align-items: center на .content-wrapper уже это делает */
+}
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotation {
+    0%   { --gradient-angle: 0deg; }
+    100% { --gradient-angle: 360deg; }
+}
+
+.content::before,
+.content::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        #14cee6,
+        #132414,
+        #14e630,
+        #132414,
+        #14cee6
+    );
+    border-radius: inherit;
+    animation: rotation 30s linear infinite;
+}
+
+.content::after {
+    filter: blur(3.5rem);
+}
+
+@media (max-width: 768px) { /* Выберите точку перехода (breakpoint) */
+    .content-wrapper {
+        padding-top: 10vh; /* Можно уменьшить верхний отступ на мобильных */
+    }
+
+    .content {
+        width: 100%;          /* Полная ширина на мобильных */
+        padding: 40px 20px;   /* Уменьшенные отступы для мобильных */
+        border-radius: 0;     /* Убираем скругление на мобильных */
+    }
+}

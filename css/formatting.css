@@ -1,0 +1,95 @@
+h1 {
+    font-size: 3em;
+    margin: 24px 0 0 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+
+    border-bottom: solid 3px #499b6566;
+
+    text-align: left;
+    position: relative;
+
+    width: 80%;
+    max-width: 800px;
+}
+
+@media (max-width: 768px) { /* Выберите точку перехода (breakpoint) */
+    h1 {
+        width: 100%;
+    }
+}
+
+h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.p-block {
+    text-align: justify;
+    
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.accent {
+    color: #499b65;
+    font-size: 1em;
+}
+
+.text-shadow {
+    text-shadow:
+        2px 2px 0px #000000,
+        0px 0px 16px #000000,
+        0px 0px 16px #000000,
+        0px 0px 16px #000000,
+        0px 0px 16px #000000;
+}
+
+a, a:link, a:hover, a:active {
+    color: #4ce961;
+}
+a:visited {
+    color: rgb(37, 155, 37);
+}
+
+
+.emoji-list {
+    display: inline-block; /* Чтобы список был блочным, но его можно было центрировать с помощью text-align: center на родителе .content */
+}
+
+/* Каждая строка: эмодзи + текст */
+.emoji-item {
+    display: flex;          /* Включаем Flexbox для расположения эмодзи и текста в ряд */
+    /* align-items: center;    /* Вертикальное выравнивание по центру, если эмодзи и текст разной высоты */
+    margin-bottom: 0.75em;  /* Отступ между строками (можно использовать px, например 10px) */
+}
+
+/* Стили для эмодзи */
+.emoji-icon {
+    font-size: 2.4em;       /* Увеличиваем размер эмодзи (подберите значение) */
+    margin-right: 0.5em;    /* Отступ справа от эмодзи (относительно размера шрифта эмодзи) */
+                            /* или фиксированный: margin-right: 15px; */
+    line-height: 1;         /* Для лучшего контроля вертикального выравнивания эмодзи */
+    display: inline-block;  /* Для применения некоторых свойств, если нужно */
+    width: 1.3em;           /* Опционально: задать ширину, чтобы иконки занимали одинаковое место и текст выравнивался */
+                            /* Это значение может потребоваться подогнать под самый широкий эмодзи или среднее значение */
+    text-align: center;     /* Если задана ширина, центрировать эмодзи внутри этого блока */
+}
+
+/* Стили для текста рядом с эмодзи (если нужны специфичные) */
+.emoji-text {
+    font-size: 0.9em;         /* Базовый размер текста, можно настроить */
+    /* color: #c0c0c0; */   /* Пример цвета, если хотите изменить */
+}
+
+
+@keyframes blink-smooth {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.blinking {
+    animation: blink-smooth 1.5s linear infinite;
+}
