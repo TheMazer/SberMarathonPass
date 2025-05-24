@@ -1,3 +1,10 @@
+:root {
+    --frame-color-1: #14cee6;
+    --frame-color-2: #132414;
+    --frame-color-3: #14e630;
+    --heading-line: #499b6566;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -94,6 +101,13 @@ video {
     100% { --gradient-angle: 360deg; }
 }
 
+.gold-frame {
+    --frame-color-1: #e6e314;
+    --frame-color-2: #241813;
+    --frame-color-3: #e6a414;
+    --heading-line: #a8994166;
+}
+
 .content::before,
 .content::after {
     content: "";
@@ -102,11 +116,11 @@ video {
     z-index: -1;
     background: conic-gradient(
         from var(--gradient-angle),
-        #14cee6,
-        #132414,
-        #14e630,
-        #132414,
-        #14cee6
+        var(--frame-color-1),
+        var(--frame-color-2),
+        var(--frame-color-3),
+        var(--frame-color-2),
+        var(--frame-color-1)
     );
     border-radius: inherit;
     animation: rotation 30s linear infinite;

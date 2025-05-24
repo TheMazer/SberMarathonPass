@@ -1,0 +1,132 @@
+/* ... (Ваш существующий CSS) ... */
+
+/* Стили для заголовка внутри .content, если он есть */
+.content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #e8e6e3; /* Цвет из вашей темы */
+}
+
+/* Контейнер для сетки карточек */
+.card-grid {
+    display: grid;
+    /* 
+       grid-template-columns: repeat(auto-fit, minmax(min_width, 1fr));
+       - auto-fit: автоматически подбирает количество колонок, чтобы они заполнили доступное пространство.
+       - minmax(280px, 1fr): каждая колонка будет минимум 280px. Если есть место, она растянется (1fr).
+       Это ключевое свойство для адаптивности!
+    */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; /* Расстояние между карточками */
+}
+
+/* Стили для отдельной карточки */
+.card {
+    --accent: #72b5d4;
+
+    border: var(--accent) 1px solid;
+    background-color: #1a1f26;
+    border-radius: 16px;
+
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    position: relative;
+}
+
+.card.full-width {
+    grid-column: 1 / -1;
+}
+
+.card a {
+    color: var(--accent);
+}
+
+.card .button {
+    border: var(--accent) 2px solid;
+    margin-top: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+
+    transition: background-color 0.2s;
+}
+
+    .card .button:hover {
+        background-color: var(--accent);
+    }
+
+.card-image {
+    width: 100%;
+    height: 200px; /* Фиксированная высота для единообразия или auto */
+    object-fit: cover; /* Масштабирует изображение, чтобы оно заполнило контейнер, обрезая лишнее */
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-id {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--accent);
+    font-size: 1.2em;
+}
+
+.card-title {
+    margin: 0 0 8px 0;
+    padding-bottom: 10px;
+    font-size: 1.4em;
+    color: #e8e6e3;
+    border-bottom: var(--accent) 1px solid;
+}
+
+.card-title img {
+    height: 2em;
+    margin-top: -4px;
+    vertical-align: middle;
+}
+
+.card-description {
+    margin: 8px 0 0 0;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #c0c0c0; /* Чуть более тусклый цвет для описания */
+    flex-grow: 1; /* Чтобы описание занимало место и кнопка была внизу */
+}
+
+
+.card span {
+    color: var(--accent);
+    margin: 0;
+}
+
+.card-footer {
+    margin-top: 16px !important;
+}
+
+/* Адаптация для очень маленьких экранов, если minmax(280px, 1fr) все еще слишком широк */
+/* Обычно это не требуется, так как auto-fit сам сделает одну колонку, */
+/* но если минимальная ширина карточки (280px) не помещается, можно добавить */
+@media (max-width: 320px) {
+    .card-grid {
+        grid-template-columns: 1fr; /* Одна колонка на очень узких экранах */
+        gap: 20px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-description {
+        font-size: 0.9em;
+    }
+}
