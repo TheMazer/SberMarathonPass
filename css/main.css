@@ -127,3 +127,32 @@ video {
         border-radius: 0;     /* Убираем скругление на мобильных */
     }
 }
+
+
+.tech-stack-icons.fan-out {
+    display: block; /* Или flex, если внутри еще что-то, но для абсолютных детей не так важно */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none; /* Чтобы контейнер не мешал взаимодействию с контентом под ним */
+}
+
+.tech-stack-icons.fan-out .tech-icon {
+    width: 64px; /* Размер иконки */
+    height: 64px;
+    position: absolute;
+    /* Начальное положение - центр родительского .tech-stack-icons (который = .content) */
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    /* Начальный transform: отцентрировать, уменьшить */
+    transform: translate(-50%, -50%) scale(0.3);
+    transform-origin: center center; /* Точка трансформации для вращения и масштабирования */
+
+    /* Плавный переход для свойств, которые будет изменять JS */
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s ease-out;
+}
