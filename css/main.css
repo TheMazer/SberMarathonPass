@@ -2,7 +2,12 @@
     --frame-color-1: #14cee6;
     --frame-color-2: #132414;
     --frame-color-3: #14e630;
+
     --heading-line: #499b6566;
+
+    --link-color: #4ce961;
+    --link-color-visited: rgb(37, 155, 37);
+    --accent-color: #499b65;
 }
 
 *, *::before, *::after {
@@ -19,9 +24,10 @@ html, body {
     color: #e8e6e3;
 
     user-select: none;
-    visibility: hidden;
+    /* visibility: hidden; */
 
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -105,7 +111,12 @@ video {
     --frame-color-1: #e6e314;
     --frame-color-2: #241813;
     --frame-color-3: #e6a414;
+
     --heading-line: #a8994166;
+
+    --link-color: #e9d94c;
+    --link-color-visited: rgb(155, 124, 37);
+    --accent-color: #9b8549;
 }
 
 .content::before,
@@ -169,4 +180,14 @@ video {
     /* Плавный переход для свойств, которые будет изменять JS */
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 opacity 0.5s ease-out;
+}
+
+
+hr {
+  border: none; /* Удаляет стандартную границу */
+  height: 4px; /* Толщина линии */
+  background-color: var(--accent-color); /* Цвет линии */
+  width: 35%; /* Ширина линии */
+  margin: 20px 0; /* Отступы сверху и снизу, выравнивание по центру */
+  border-radius: 2px; /* Скругление краев */
 }

@@ -11,6 +11,18 @@ h1 {
 
     width: 80%;
     max-width: 800px;
+
+    opacity: 1;
+    transition: opacity 0.1s;
+}
+
+h1:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+h1:active {
+    opacity: 0.5;
 }
 
 @media (max-width: 768px) { /* Выберите точку перехода (breakpoint) */
@@ -48,10 +60,19 @@ h2 {
 }
 
 a, a:link, a:hover, a:active {
-    color: #4ce961;
+    text-underline-offset: 4px;
+    color: var(--link-color);
 }
 a:visited {
-    color: rgb(37, 155, 37);
+    color: var(--link-color-visited);
+}
+.staticLink:visited {
+    color: var(--link-color) !important;
+}
+
+.text-icon {
+    height: 1em;
+    vertical-align: middle;
 }
 
 

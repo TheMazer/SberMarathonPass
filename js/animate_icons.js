@@ -65,9 +65,13 @@ if (firstContentBlock) {
     observer.observe(firstContentBlock);
 }
 
-    // Если ваш JS для центрирования первого блока уже есть:
-    window.onload = function() {
+// Если ваш JS для центрирования первого блока уже есть:
+window.onload = function() {
     document.body.style.visibility = 'visible';
     // centerFirstContentBlock(); // Ваша функция центрирования
     // animateTechIcons(); // Теперь можно вызывать здесь, если IntersectionObserver не используется
 };
+
+Array.from(document.getElementsByTagName('img')).forEach((image) => {
+    image.setAttribute('draggable', false);
+});
