@@ -11,23 +11,27 @@
         <link rel="stylesheet" href="css/card_grid.css">
     </head>
     <body>
-        <div class="video-background">
+        <!-- <div class="video-background">
             <video autoplay muted loop class="video-content">  
                 <source src="glitch_bg.mp4" type="video/mp4">  
             </video>
             <div class="overlay"></div>
-        </div>
+        </div> -->
         <main class="content-wrapper">
             <div class="content">
                 <div class="sourceImages">
+                    <img id="sourceImage0" src="src/me_glitch_variants/0.png" style="display: none;">
                     <img id="sourceImage1" src="src/me_glitch_variants/1.png" style="display: none;">
                     <img id="sourceImage2" src="src/me_glitch_variants/2.png" style="display: none;">
                     <img id="sourceImage3" src="src/me_glitch_variants/3.png" style="display: none;">
                 </div>
-                <canvas id="glitchCanvas" height="400" style="margin-bottom: -64px;"></canvas>
+                <div class="person-container">
+                    <div class="glow-orb"></div>
+                    <canvas id="glitchCanvas" height="400" style="margin-bottom: -64px;"></canvas>
+                </div>
 
                 <script src="js/glitcher.js"></script>
-                <div>
+                <div style="position: relative; z-index: 2;">
                     <h2 class="text-shadow">Рыженков Евгений Олегович</h2>
                     <p style="margin: 0.25em 0 2em 0;"><span class="accent">Frontend | Backend | GameDev разработчик</span></p>
 

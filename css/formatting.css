@@ -52,11 +52,11 @@ h2 {
 
 .text-shadow {
     text-shadow:
-        2px 2px 0px #000000,
-        0px 0px 16px #000000,
-        0px 0px 16px #000000,
-        0px 0px 16px #000000,
-        0px 0px 16px #000000;
+        2px 2px 0px #0f1217,
+        0px 0px 16px #0f1217,
+        0px 0px 16px #0f1217,
+        0px 0px 16px #0f1217,
+        0px 0px 16px #0f1217;
 }
 
 a, a:link, a:hover, a:active {

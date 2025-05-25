@@ -2,6 +2,7 @@ const canvas = document.getElementById('glitchCanvas');
 const ctx = canvas.getContext('2d');
 
 const sourceImageElements = [
+    document.getElementById('sourceImage0'),
     document.getElementById('sourceImage1'),
     document.getElementById('sourceImage2'),
     document.getElementById('sourceImage3'),

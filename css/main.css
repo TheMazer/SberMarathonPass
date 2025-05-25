@@ -191,3 +191,77 @@ hr {
   margin: 20px 0; /* Отступы сверху и снизу, выравнивание по центру */
   border-radius: 2px; /* Скругление краев */
 }
+
+
+#glitchCanvas {
+    position: relative;
+    z-index: 1;
+}
+
+.person-container {
+    position: relative; /* <--- ВАЖНО! Это создаст контекст позиционирования для .pulsating-glow-orb */
+    display: flex; /* Если вы хотите, чтобы canvas и orb влияли на размеры друг друга или для выравнивания */
+    flex-direction: column; /* Расположить элементы в столбик (canvas над orb по умолчанию) */
+    align-items: center;
+}
+
+.glow-orb {
+    width: 0;  /* Размер самого шара */
+    height: 0;
+    background-color: #7df9ff; /* Яркий цвет ядра шара (например, неоновый голубой) */
+    border-radius: 50%; /* Делает div круглым */
+
+    position: absolute;   /* Абсолютное позиционирование */
+    left: 50%;            /* Центрируем по горизонтали */
+    top: 50%;         /* Располагаем НИЖНИЙ край орба на -30px от нижнего края .person-container. */
+                          /* Это означает, что большая часть орба будет ВНУТРИ .person-container, */
+                          /* но его центр будет ниже центра .person-container. */
+                          /* Поэкспериментируйте с этим значением. Например, bottom: 0; поместит нижний край орба */
+                          /* на нижний край person-container, а bottom: 20px; поднимет его выше. */
+                          /* Чтобы он был "чуть выше центрального низа", значение должно быть таким, */
+                          /* чтобы центр орба (примерно на bottom + height/2) был выше низа контейнера. */
+                          /* Если хотите, чтобы он был чуть выше НИЗА CANVAS, то см. альтернативу ниже. */
+    transform: translateX(-50%); /* Точное горизонтальное центрирование */
+    transform: translateY(-50%);
+
+    /*
+     Многослойный box-shadow для создания глубокого свечения:
+     1. Внутренний яркий блик (почти белый)
+     2. Основное свечение цвета шара
+     3. Более широкое, более прозрачное внешнее свечение
+     Формат: offsetX offsetY blurRadius spreadRadius color
+    */
+    box-shadow:
+        0 0 60px 48px #3ba35e66,  /* Основное свечение цвета шара */
+        0 0 120px 96px #499b6442; /* Внешнее, более мягкое и широкое свечение */
+
+    /* Анимация */
+    animation: pulseAnimation 5s infinite ease-in-out;
+    /*
+      pulseAnimation: имя анимации (см. @keyframes ниже)
+      2.5s: длительность одного цикла анимации
+      infinite: повторять бесконечно
+      ease-in-out: функция плавности (сначала медленно, ускоряется, потом замедляется)
+    */
+}
+
+@keyframes pulseAnimation {
+    0% {
+        transform: translateX(-50%) translateY(-50%) scale(0.95); /* Немного уменьшен в начале */
+        box-shadow:
+            0 0 60px 48px #3ba35e66, /* spread: 12px*4=48px, blur: 20px*3=60px */
+            0 0 120px 96px #499b6442;/* spread: 25px*~3.8=96px, blur: 40px*3=120px */
+    }
+    50% {
+        transform: translateX(-50%) translateY(-50%) scale(1.05); /* Немного увеличен в середине пульсации */
+        box-shadow:
+            0 0 100px 52px #3ba35e66, /* spread: 20px*4=80px, blur: 35px*~2.8=100px */
+            0 0 200px 100px #499b6442; /* spread: 40px*4=160px, blur: 70px*~2.8=200px */
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) scale(0.95); /* Возвращается к начальному уменьшенному состоянию */
+        box-shadow:
+            0 0 60px 48px #3ba35e66,
+            0 0 120px 96px #499b6442;
+    }
+}
