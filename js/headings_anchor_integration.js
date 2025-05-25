@@ -31,4 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY === 0 && window.location.hash) {
+            // Удалить якорь из URL, не перезагружая страницу
+            history.replaceState(null, '', window.location.pathname + window.location.search);
+        }
+     });
 });
