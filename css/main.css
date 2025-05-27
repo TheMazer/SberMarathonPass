@@ -39,16 +39,6 @@ body {
     min-height: 100vh; /* Чтобы body занимал всю высоту для вертикального центрирования, если нужно */
 }
 
-.content-wrapper {
-    padding: 8vh 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center; /* Центрирует .content блоки по горизонтали */
-    z-index: 1;
-    width: 100%; /* Убедимся, что обертка может растягиваться на всю ширину */
-}
-
 .video-background {
     position: fixed;
     top: 0;
@@ -82,20 +72,6 @@ video {
     z-index: 0;
 }
 
-.content {
-    background-color: #0f1217;
-    text-align: center;
-    position: relative;
-
-    /* Стили по умолчанию (для ПК) */
-    width: 80%;           /* Ширина для ПК */
-    max-width: 800px;     /* Максимальная ширина, чтобы не был слишком широким. Подберите значение. */
-    padding: 50px 60px;   /* Отступы для ПК */
-    border-radius: 12px;  /* Скругление для ПК */
-    /* margin: 0 auto;    Можно добавить для явного центрирования,
-                           но align-items: center на .content-wrapper уже это делает */
-}
-
 @property --gradient-angle {
     syntax: "<angle>";
     initial-value: 0deg;
@@ -117,6 +93,44 @@ video {
     --link-color: #e9d94c;
     --link-color-visited: rgb(155, 124, 37);
     --accent-color: #9b8549;
+}
+
+.purple-frame {
+    --frame-color-1: #e614e6;
+    --frame-color-2: #241813;
+    --frame-color-3: #9914e6;
+
+    --heading-line: #9f41a866;
+
+    --link-color: #b74ce9;
+    --link-color-visited: rgb(118, 37, 155);
+    --accent-color: #8d499b;
+}
+
+
+
+.content-wrapper {
+    padding: 8vh 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Центрирует .content блоки по горизонтали */
+    z-index: 1;
+    width: 100%; /* Убедимся, что обертка может растягиваться на всю ширину */
+}
+
+.content {
+    background-color: #0f1217;
+    text-align: center;
+    position: relative;
+
+    /* Стили по умолчанию (для ПК) */
+    width: 80%;           /* Ширина для ПК */
+    max-width: 800px;     /* Максимальная ширина, чтобы не был слишком широким. Подберите значение. */
+    padding: 50px 60px;   /* Отступы для ПК */
+    border-radius: 12px;  /* Скругление для ПК */
+    /* margin: 0 auto;    Можно добавить для явного центрирования,
+                           но align-items: center на .content-wrapper уже это делает */
 }
 
 .content::before,
@@ -141,6 +155,42 @@ video {
     filter: blur(3.5rem);
 }
 
+.giga-logo {
+    width: 90%;
+
+    margin-left: auto;
+        margin-right: auto;
+
+        position: relative; /* Начальное состояние */
+        top: auto; /* Начальное состояние */
+        left: auto; /* Начальное состояние */
+        z-index: -1;
+
+        display: flex; /* Для центрирования <img>, если он меньше */
+        justify-content: center;
+        align-items: center;
+}
+
+.giga-logo img { /* Если логотип - это тег <img> внутри .giga-logo */
+    width: 100%; /* Чтобы изображение не вылезало за пределы .giga-logo */
+    height: auto;    /* Сохраняем пропорции */
+    display: block;
+}
+
+.giga-logo.is-sticky {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.giga-logo-sticky-wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: 10vh 0;
+}
+
 @media (max-width: 768px) { /* Выберите точку перехода (breakpoint) */
     .content-wrapper {
         padding-top: 10vh; /* Можно уменьшить верхний отступ на мобильных */
@@ -150,6 +200,10 @@ video {
         width: 100%;          /* Полная ширина на мобильных */
         padding: 40px 20px;   /* Уменьшенные отступы для мобильных */
         border-radius: 0;     /* Убираем скругление на мобильных */
+    }
+
+    .giga-logo-sticky-wrapper {
+        width: 100%;
     }
 }
 

@@ -36,6 +36,19 @@ h2 {
     margin: 0;
 }
 
+.p-heading {
+    margin: 24px 0 0 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+
+    border-bottom: solid 2px var(--heading-line);
+    padding-bottom: 8px;
+    color: var(--link-color);
+
+    text-align: left;
+    position: relative;
+}
+
 .p-block {
     text-align: justify;
     
