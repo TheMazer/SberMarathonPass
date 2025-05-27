@@ -15,20 +15,12 @@
     opacity: 0.5;
 }
 
-/* Контейнер для сетки карточек */
 .card-grid {
     display: grid;
-    /* 
-       grid-template-columns: repeat(auto-fit, minmax(min_width, 1fr));
-       - auto-fit: автоматически подбирает количество колонок, чтобы они заполнили доступное пространство.
-       - minmax(280px, 1fr): каждая колонка будет минимум 280px. Если есть место, она растянется (1fr).
-       Это ключевое свойство для адаптивности!
-    */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px; /* Расстояние между карточками */
+    gap: 25px;
 }
 
-/* Стили для отдельной карточки */
 .card {
     --accent: #72b5d4;
     --card-bg: #1a1f26;
@@ -106,8 +98,8 @@
 
 .card-image {
     width: 100%;
-    height: 200px; /* Фиксированная высота для единообразия или auto */
-    object-fit: cover; /* Масштабирует изображение, чтобы оно заполнило контейнер, обрезая лишнее */
+    height: 200px;
+    object-fit: cover;
     display: block;
 }
 
@@ -161,8 +153,8 @@
     margin: 8px 0 0 0;
     font-size: 0.95em;
     line-height: 1.6;
-    color: #c0c0c0; /* Чуть более тусклый цвет для описания */
-    flex-grow: 1; /* Чтобы описание занимало место и кнопка была внизу */
+    color: #c0c0c0;
+    flex-grow: 1;
 }
 
     .giga .card-description {
@@ -179,12 +171,9 @@
     margin-top: 16px !important;
 }
 
-/* Адаптация для очень маленьких экранов, если minmax(280px, 1fr) все еще слишком широк */
-/* Обычно это не требуется, так как auto-fit сам сделает одну колонку, */
-/* но если минимальная ширина карточки (280px) не помещается, можно добавить */
 @media (max-width: 320px) {
     .card-grid {
-        grid-template-columns: 1fr; /* Одна колонка на очень узких экранах */
+        grid-template-columns: 1fr;
         gap: 20px;
     }
     .card-title {

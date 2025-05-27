@@ -32,11 +32,9 @@ html, body {
 
 body {
     display: flex;
-    /* justify-content: center; <-- Это центрирует .content-wrapper по горизонтали, если он не 100% ширины */
-    /* align-items: center;    <-- Это центрирует .content-wrapper по вертикали, если body имеет высоту */
     flex-direction: column;
     background-color: transparent;
-    min-height: 100vh; /* Чтобы body занимал всю высоту для вертикального центрирования, если нужно */
+    min-height: 100vh;
 }
 
 .video-background {
@@ -114,9 +112,9 @@ video {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center; /* Центрирует .content блоки по горизонтали */
+    align-items: center;
     z-index: 1;
-    width: 100%; /* Убедимся, что обертка может растягиваться на всю ширину */
+    width: 100%;
 }
 
 .content {
@@ -124,13 +122,10 @@ video {
     text-align: center;
     position: relative;
 
-    /* Стили по умолчанию (для ПК) */
-    width: 80%;           /* Ширина для ПК */
-    max-width: 800px;     /* Максимальная ширина, чтобы не был слишком широким. Подберите значение. */
-    padding: 50px 60px;   /* Отступы для ПК */
-    border-radius: 12px;  /* Скругление для ПК */
-    /* margin: 0 auto;    Можно добавить для явного центрирования,
-                           но align-items: center на .content-wrapper уже это делает */
+    width: 80%;
+    max-width: 800px;
+    padding: 50px 60px;
+    border-radius: 12px;
 }
 
 .content::before,
@@ -161,21 +156,21 @@ video {
     margin-left: auto;
     margin-right: auto;
 
-    position: relative; /* Начальное состояние */
-    top: auto; /* Начальное состояние */
-    left: auto; /* Начальное состояние */
+    position: relative;
+    top: auto;
+    left: auto;
     z-index: -1;
 
-    display: flex; /* Для центрирования <img>, если он меньше */
+    display: flex;
     justify-content: center;
     align-items: center;
 
     transition: opacity 0.1s ease-out;
 }
 
-.giga-logo img { /* Если логотип - это тег <img> внутри .giga-logo */
-    width: 100%; /* Чтобы изображение не вылезало за пределы .giga-logo */
-    height: auto;    /* Сохраняем пропорции */
+.giga-logo img {
+    width: 100%;
+    height: auto;
     display: block;
 
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
@@ -191,15 +186,12 @@ video {
 }
 
 .giga-logo.is-hidden-for-docking {
-    /* Можно просто скрыть его, или убрать из fixed позиционирования,
-       чтобы он не мешал, если вдруг останется видим */
     visibility: hidden;
     opacity: 0;
-    /* Если он был is-sticky, эти стили его "уберут" из fixed */
-    position: relative; /* или static, возвращая в поток его wrapper'а */
+    position: relative;
     top: auto;
     left: auto;
-    transform: none; /* Сбросить transform от is-sticky */
+    transform: none;
 }
 
 #dockedGigaLogo {
@@ -220,129 +212,111 @@ video {
     margin: 10vh 0;
 }
 
-@media (max-width: 768px) { /* Выберите точку перехода (breakpoint) */
+@media (max-width: 768px) {
     .content-wrapper {
-        padding-top: 10vh; /* Можно уменьшить верхний отступ на мобильных */
+        padding-top: 10vh;
     }
 
     .content {
-        width: 100%;          /* Полная ширина на мобильных */
-        padding: 40px 20px;   /* Уменьшенные отступы для мобильных */
-        border-radius: 0;     /* Убираем скругление на мобильных */
+        width: 100%;
+        padding: 40px 20px;
+        border-radius: 0;
     }
 
     .giga-logo-sticky-wrapper {
         width: 100%;
     }
+
+    #dockedGigaLogo {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 
 .tech-stack-icons.fan-out {
-    display: block; /* Или flex, если внутри еще что-то, но для абсолютных детей не так важно */
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -2;
-    pointer-events: none; /* Чтобы контейнер не мешал взаимодействию с контентом под ним */
+    pointer-events: none;
 }
 
 .tech-stack-icons.fan-out .tech-icon {
-    width: 64px; /* Размер иконки */
+    width: 64px;
     height: 64px;
     position: absolute;
-    /* Начальное положение - центр родительского .tech-stack-icons (который = .content) */
     left: 50%;
     top: 50%;
     opacity: 0;
-    /* Начальный transform: отцентрировать, уменьшить */
     transform: translate(-50%, -50%) scale(0.3);
-    transform-origin: center center; /* Точка трансформации для вращения и масштабирования */
+    transform-origin: center center;
 
-    /* Плавный переход для свойств, которые будет изменять JS */
     transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 opacity 0.5s ease-out;
 }
 
 
 hr {
-  border: none; /* Удаляет стандартную границу */
-  height: 4px; /* Толщина линии */
-  background-color: var(--accent-color); /* Цвет линии */
-  width: 35%; /* Ширина линии */
-  margin: 20px 0; /* Отступы сверху и снизу, выравнивание по центру */
-  border-radius: 2px; /* Скругление краев */
+  border: none;
+  height: 4px;
+  background-color: var(--accent-color);
+  width: 35%;
+  margin: 20px 0;
+  border-radius: 2px;
 }
 
 
-#glitchCanvas {
+#glitchCanvas,
+#glitchCanvas2 {
     position: relative;
     z-index: 1;
 }
 
 .person-container {
-    position: relative; /* <--- ВАЖНО! Это создаст контекст позиционирования для .pulsating-glow-orb */
-    display: flex; /* Если вы хотите, чтобы canvas и orb влияли на размеры друг друга или для выравнивания */
-    flex-direction: column; /* Расположить элементы в столбик (canvas над orb по умолчанию) */
+    position: relative;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .glow-orb {
-    width: 0;  /* Размер самого шара */
+    width: 0;
     height: 0;
-    background-color: #7df9ff; /* Яркий цвет ядра шара (например, неоновый голубой) */
-    border-radius: 50%; /* Делает div круглым */
+    background-color: #7df9ff;
+    border-radius: 50%;
 
-    position: absolute;   /* Абсолютное позиционирование */
-    left: 50%;            /* Центрируем по горизонтали */
-    top: 50%;         /* Располагаем НИЖНИЙ край орба на -30px от нижнего края .person-container. */
-                          /* Это означает, что большая часть орба будет ВНУТРИ .person-container, */
-                          /* но его центр будет ниже центра .person-container. */
-                          /* Поэкспериментируйте с этим значением. Например, bottom: 0; поместит нижний край орба */
-                          /* на нижний край person-container, а bottom: 20px; поднимет его выше. */
-                          /* Чтобы он был "чуть выше центрального низа", значение должно быть таким, */
-                          /* чтобы центр орба (примерно на bottom + height/2) был выше низа контейнера. */
-                          /* Если хотите, чтобы он был чуть выше НИЗА CANVAS, то см. альтернативу ниже. */
-    transform: translateX(-50%); /* Точное горизонтальное центрирование */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
     transform: translateY(-50%);
 
-    /*
-     Многослойный box-shadow для создания глубокого свечения:
-     1. Внутренний яркий блик (почти белый)
-     2. Основное свечение цвета шара
-     3. Более широкое, более прозрачное внешнее свечение
-     Формат: offsetX offsetY blurRadius spreadRadius color
-    */
     box-shadow:
-        0 0 60px 48px #3ba35e66,  /* Основное свечение цвета шара */
-        0 0 120px 96px #499b6442; /* Внешнее, более мягкое и широкое свечение */
+        0 0 60px 48px #3ba35e66,
+        0 0 120px 96px #499b6442;
 
-    /* Анимация */
     animation: pulseAnimation 5s infinite ease-in-out;
-    /*
-      pulseAnimation: имя анимации (см. @keyframes ниже)
-      2.5s: длительность одного цикла анимации
-      infinite: повторять бесконечно
-      ease-in-out: функция плавности (сначала медленно, ускоряется, потом замедляется)
-    */
 }
 
 @keyframes pulseAnimation {
     0% {
-        transform: translateX(-50%) translateY(-50%) scale(0.95); /* Немного уменьшен в начале */
+        transform: translateX(-50%) translateY(-50%) scale(0.95);
         box-shadow:
-            0 0 60px 48px #3ba35e66, /* spread: 12px*4=48px, blur: 20px*3=60px */
-            0 0 120px 96px #499b6442;/* spread: 25px*~3.8=96px, blur: 40px*3=120px */
+            0 0 60px 48px #3ba35e66,
+            0 0 120px 96px #499b6442;
     }
     50% {
-        transform: translateX(-50%) translateY(-50%) scale(1.05); /* Немного увеличен в середине пульсации */
+        transform: translateX(-50%) translateY(-50%) scale(1.05);
         box-shadow:
-            0 0 100px 52px #3ba35e66, /* spread: 20px*4=80px, blur: 35px*~2.8=100px */
-            0 0 200px 100px #499b6442; /* spread: 40px*4=160px, blur: 70px*~2.8=200px */
+            0 0 100px 52px #3ba35e66,
+            0 0 200px 100px #499b6442;
     }
     100% {
-        transform: translateX(-50%) translateY(-50%) scale(0.95); /* Возвращается к начальному уменьшенному состоянию */
+        transform: translateX(-50%) translateY(-50%) scale(0.95);
         box-shadow:
             0 0 60px 48px #3ba35e66,
             0 0 120px 96px #499b6442;
