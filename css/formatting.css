@@ -36,8 +36,17 @@ h2 {
     margin: 0;
 }
 
+.quote {
+    text-align: left;
+    width: 100%;
+    background-color: var(--frame-color-2);
+    font-family: "Montserrat", sans-serif;
+    padding: 8px;
+    border-left: var(--frame-color-1) 2px solid;
+}
+
 .p-heading {
-    margin: 24px 0 0 0;
+    margin: 36px 0 0 0;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
 
@@ -49,6 +58,11 @@ h2 {
     position: relative;
 }
 
+    .p-heading span {
+        color: color-mix(in oklab, var(--link-color) 15%, white);
+        font-style: italic;
+    }
+
 .p-block {
     text-align: justify;
     
@@ -56,6 +70,10 @@ h2 {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+
+ol > li {
+    margin-top: 1em;
 }
 
 .accent {

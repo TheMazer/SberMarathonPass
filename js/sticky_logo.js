@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const wrapperRect = stickyWrapper.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         const wrapperCenterY_document = window.pageYOffset + wrapperRect.top + (wrapperRect.height / 2);
-        const offsetToBecomeSticky = 10; // Небольшое опережение
+        const offsetToBecomeSticky = 0; // Небольшое опережение
 
         stickyPointY = wrapperCenterY_document - (windowHeight / 2) - offsetToBecomeSticky;
     }

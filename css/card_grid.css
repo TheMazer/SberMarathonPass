@@ -145,7 +145,7 @@
 }
 
     .giga .card-title {
-        font-family: "Montserrat";
+        font-family: "Montserrat", sans-serif;
         padding-bottom: 0;
         margin: 0;
         border: none;
@@ -166,7 +166,7 @@
 }
 
     .giga .card-description {
-        font-family: "Montserrat";
+        font-family: "Montserrat", sans-serif;
     }
 
 
