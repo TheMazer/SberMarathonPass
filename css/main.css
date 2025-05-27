@@ -159,22 +159,28 @@ video {
     width: 90%;
 
     margin-left: auto;
-        margin-right: auto;
+    margin-right: auto;
 
-        position: relative; /* Начальное состояние */
-        top: auto; /* Начальное состояние */
-        left: auto; /* Начальное состояние */
-        z-index: -1;
+    position: relative; /* Начальное состояние */
+    top: auto; /* Начальное состояние */
+    left: auto; /* Начальное состояние */
+    z-index: -1;
 
-        display: flex; /* Для центрирования <img>, если он меньше */
-        justify-content: center;
-        align-items: center;
+    display: flex; /* Для центрирования <img>, если он меньше */
+    justify-content: center;
+    align-items: center;
+
+    transition: opacity 0.1s ease-out;
 }
 
 .giga-logo img { /* Если логотип - это тег <img> внутри .giga-logo */
     width: 100%; /* Чтобы изображение не вылезало за пределы .giga-logo */
     height: auto;    /* Сохраняем пропорции */
     display: block;
+
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    visibility: visible;
+    opacity: 1;
 }
 
 .giga-logo.is-sticky {
@@ -184,9 +190,32 @@ video {
     transform: translate(-50%, -50%);
 }
 
+.giga-logo.is-hidden-for-docking {
+    /* Можно просто скрыть его, или убрать из fixed позиционирования,
+       чтобы он не мешал, если вдруг останется видим */
+    visibility: hidden;
+    opacity: 0;
+    /* Если он был is-sticky, эти стили его "уберут" из fixed */
+    position: relative; /* или static, возвращая в поток его wrapper'а */
+    top: auto;
+    left: auto;
+    transform: none; /* Сбросить transform от is-sticky */
+}
+
+#dockedGigaLogo {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#dockedGigaLogo.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.logo-stop-container,
 .giga-logo-sticky-wrapper {
     width: 100%;
-    height: auto;
     position: relative;
     margin: 10vh 0;
 }
